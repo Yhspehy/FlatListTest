@@ -13,11 +13,9 @@ import {
   Image,
   View,
   Text,
-  StatusBar,
   FlatList,
   Modal,
   TouchableOpacity,
-  Animated,
 } from 'react-native';
 
 const list = [1, 2, 3, 4, 5, 6, 7];
@@ -32,27 +30,20 @@ const App: () => React$Node = () => {
           uri:
             'http://tupian.qqw21.com/article/UploadPic/2015-4/20154412125271570.jpg',
         }}
-        style={{width: 60, height: 60, borderRadius: 30}}
+        style={styles.avatar}
       />
     );
   }
 
   function _renderItem({item}) {
     return (
-      <TouchableOpacity
-        style={{flexDirection: 'row'}}
-        onPress={() => setVisible(true)}>
+      <TouchableOpacity style={styles.flexRow} onPress={() => setVisible(true)}>
         <Image
           source={{
             uri:
               'http://tupian.qqw21.com/article/UploadPic/2015-4/20154412125271570.jpg',
           }}
-          style={{
-            width: 60,
-            height: 60,
-            borderRadius: 30,
-            marginRight: 30,
-          }}
+          style={styles.avatar}
         />
 
         <Text>Hello{item}</Text>
@@ -62,7 +53,7 @@ const App: () => React$Node = () => {
 
   return (
     <>
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView>
         {homeHeaderComponent()}
 
         <FlatList
@@ -95,12 +86,19 @@ const App: () => React$Node = () => {
 
 const styles = StyleSheet.create({
   contentContainerStyle: {
-    // flex: 1,
     padding: 15,
+  },
+  flexRow: {
+    flexDirection: 'row',
   },
   bottomModal: {
     justifyContent: 'flex-end',
     margin: 0,
+  },
+  avatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
   mask: {
     position: 'absolute',
@@ -125,9 +123,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  saveText: {
-    fontSize: 17,
   },
   cancelText: {
     fontSize: 17,
